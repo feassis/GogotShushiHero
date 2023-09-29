@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 func _move() -> void:
 	var _input_direction: Vector2 = Input.get_vector(
 		"move_left", "move_right",
-		"move_backward", "move_forward"
+		 "move_forward","move_backward",
 	)
 	
 	var _direction: Vector3 = transform.basis * Vector3(
@@ -36,10 +36,10 @@ func _move() -> void:
 		velocity.x = _direction.x * _currentSpeed
 		velocity.z = _direction.z * _currentSpeed
 		
-		body.apply_rotation(velocity)
+		body.apply_rotation(velocity.normalized())
 		return
 	
-	velocity.x = move_toward(velocity.x, 0, _currentSpeed)
+	velocity.x = move_toward(-velocity.x, 0, _currentSpeed)
 	velocity.z = move_toward(velocity.z, 0, _currentSpeed)
 	
 	

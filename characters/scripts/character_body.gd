@@ -9,11 +9,7 @@ class_name Body
 @export var animation: AnimationPlayer = null
 
 func apply_rotation(velocity: Vector3) -> void:
-	var angularVelocity:float
-	if atan2( velocity.x, -velocity.z) > 180:
-		angularVelocity = 180 - atan2( velocity.x, -velocity.z)
-	else: 
-		angularVelocity = atan2( velocity.x, -velocity.z)
+	var angularVelocity:float = atan2( velocity.x, velocity.z)
 	rotation.y = lerp_angle(
 		rotation.y,  angularVelocity, rotationVelocity
 	)

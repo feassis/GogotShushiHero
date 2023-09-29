@@ -11,7 +11,7 @@ class_name CharacterSpringArm
 
 func  _unhandled_input(event) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(event.relative.x * mouseSensibility)
+		rotate_y(-event.relative.x * mouseSensibility)
 		springArm.rotate_x(-event.relative.y * mouseSensibility)
 		springArm.rotation.x = clamp(springArm.rotation.x, cameraXRotationLowerBound, cameraXRotationUpperBound)
 		
