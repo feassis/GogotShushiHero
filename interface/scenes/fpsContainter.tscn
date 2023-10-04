@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7ydy34iq3ki7"]
+
+[ext_resource type="Script" path="res://interface/scenes/scripts/fpsContainter.gd" id="1_365yr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rs42p"]
+font_size = 24
+
+[node name="FPSContainer" type="ColorRect" node_paths=PackedStringArray("fpsText")]
+custom_minimum_size = Vector2(1980, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.505882)
+script = ExtResource("1_365yr")
+fpsText = NodePath("FPS")
+
+[node name="FPS" type="Label" parent="."]
+custom_minimum_size = Vector2(102, 37)
+layout_mode = 0
+offset_left = 1850.0
+offset_right = 1952.0
+offset_bottom = 37.0
+text = "9999 fps
+"
+label_settings = SubResource("LabelSettings_rs42p")
+horizontal_alignment = 2
+vertical_alignment = 1

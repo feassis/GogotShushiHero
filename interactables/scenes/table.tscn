@@ -1,0 +1,88 @@
+[gd_scene load_steps=21 format=3 uid="uid://1u6l6cj4eucy"]
+
+[ext_resource type="PackedScene" uid="uid://cxiet3cxcits5" path="res://furniture/environment/table.tscn" id="1_oesnu"]
+[ext_resource type="Script" path="res://interactables/scriptis/table.gd" id="1_tnjg4"]
+[ext_resource type="PackedScene" uid="uid://coes3he2dm1n" path="res://furniture/environment/plate.tscn" id="2_7oa2n"]
+[ext_resource type="PackedScene" uid="uid://bunfkvgqxjlpj" path="res://furniture/environment/stool.tscn" id="2_tn7jc"]
+[ext_resource type="PackedScene" uid="uid://bnqe2vvgblm12" path="res://foods/scenes/chukaman.tscn" id="5_ihdfm"]
+[ext_resource type="PackedScene" uid="uid://cjt51wxm2mk8" path="res://foods/scenes/dango.tscn" id="6_0ql0i"]
+[ext_resource type="PackedScene" uid="uid://dd2wpqe3gv6yq" path="res://foods/scenes/ebi_nigiri.tscn" id="7_03klv"]
+[ext_resource type="PackedScene" uid="uid://cyoancy1h1wke" path="res://foods/scenes/gyoza.tscn" id="8_1uao2"]
+[ext_resource type="PackedScene" uid="uid://bjgqteyw2pbj0" path="res://foods/scenes/maguro_nigiri.tscn" id="9_rclby"]
+[ext_resource type="PackedScene" uid="uid://b4d61no23qir4" path="res://foods/scenes/octopus_nigiri.tscn" id="10_25524"]
+[ext_resource type="PackedScene" uid="uid://bbr154bho4rll" path="res://foods/scenes/onigiri.tscn" id="11_vieby"]
+[ext_resource type="PackedScene" uid="uid://0s7b2ofd3rnw" path="res://foods/scenes/ramen.tscn" id="12_va3rw"]
+[ext_resource type="PackedScene" uid="uid://iua5g6nuavbu" path="res://foods/scenes/roll.tscn" id="13_21fsv"]
+[ext_resource type="PackedScene" uid="uid://bexb6e60m30ea" path="res://foods/scenes/salmon_nigiri.tscn" id="14_3q6xt"]
+[ext_resource type="PackedScene" uid="uid://b1aa26axwyr2d" path="res://foods/scenes/salmon_roll.tscn" id="15_gtv3v"]
+[ext_resource type="PackedScene" uid="uid://boqbc7ky78gmh" path="res://foods/scenes/sea_urchin_roll.tscn" id="16_s58mf"]
+[ext_resource type="PackedScene" uid="uid://dwn83mm45dw8f" path="res://foods/scenes/tamago_nigiri.tscn" id="17_vr5co"]
+[ext_resource type="PackedScene" uid="uid://bacferjjkcd6u" path="res://foods/scenes/udon.tscn" id="18_6h1ri"]
+[ext_resource type="PackedScene" uid="uid://cdkn8xa5vx2p2" path="res://foods/scenes/wasabi.tscn" id="19_jlvol"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5jvqx"]
+radius = 3.2
+
+[node name="Table" type="Area3D" groups=["table"]]
+script = ExtResource("1_tnjg4")
+_Stool = ExtResource("2_tn7jc")
+
+[node name="Table" parent="." instance=ExtResource("1_oesnu")]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5jvqx")
+
+[node name="Stools" type="Node" parent="."]
+
+[node name="Plate" parent="." instance=ExtResource("2_7oa2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53908, 0)
+
+[node name="Chukaman" parent="Plate" instance=ExtResource("5_ihdfm")]
+visible = false
+
+[node name="Food_Dango" parent="Plate" instance=ExtResource("6_0ql0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180656, 0.196202, 0)
+visible = false
+
+[node name="EbiNigiri" parent="Plate" instance=ExtResource("7_03klv")]
+visible = false
+
+[node name="Gyoza" parent="Plate" instance=ExtResource("8_1uao2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0845356, 0)
+visible = false
+
+[node name="MaguroNigiri" parent="Plate" instance=ExtResource("9_rclby")]
+visible = false
+
+[node name="OctopusNigiri" parent="Plate" instance=ExtResource("10_25524")]
+visible = false
+
+[node name="Onigiri" parent="Plate" instance=ExtResource("11_vieby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0204949, 0)
+visible = false
+
+[node name="Ramen" parent="Plate" instance=ExtResource("12_va3rw")]
+visible = false
+
+[node name="Roll" parent="Plate" instance=ExtResource("13_21fsv")]
+transform = Transform3D(1, 0, 0, 0, 0.0221115, 0.999756, 0, -0.999756, 0.0221115, 0, 0.0581267, 0.238414)
+visible = false
+
+[node name="SalmonNigiri" parent="Plate" instance=ExtResource("14_3q6xt")]
+visible = false
+
+[node name="SalmonRoll" parent="Plate" instance=ExtResource("15_gtv3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237209, 0)
+visible = false
+
+[node name="SeaUrchinRoll" parent="Plate" instance=ExtResource("16_s58mf")]
+visible = false
+
+[node name="TamagoNigiri" parent="Plate" instance=ExtResource("17_vr5co")]
+visible = false
+
+[node name="Udon" parent="Plate" instance=ExtResource("18_6h1ri")]
+visible = false
+
+[node name="Wasabi" parent="Plate" instance=ExtResource("19_jlvol")]
+visible = false

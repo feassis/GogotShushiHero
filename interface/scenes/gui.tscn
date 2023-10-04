@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf0spwd77ycb3"]
+
+[ext_resource type="PackedScene" uid="uid://bkloan6mf66c8" path="res://interface/scenes/settings_container.tscn" id="1_xjh35"]
+[ext_resource type="PackedScene" uid="uid://c7ydy34iq3ki7" path="res://interface/scenes/fpsContainter.tscn" id="2_q4fos"]
+
+[node name="GUI" type="CanvasLayer"]
+process_mode = 3
+
+[node name="Settings Container" parent="." node_paths=PackedStringArray("fpsContainer") instance=ExtResource("1_xjh35")]
+fpsContainer = NodePath("../ColorRect")
+
+[node name="ColorRect" parent="." instance=ExtResource("2_q4fos")]
+visible = false
