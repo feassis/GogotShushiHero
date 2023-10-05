@@ -23,11 +23,13 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_5jvqx"]
 radius = 3.2
 
-[node name="Table" type="Area3D" groups=["table"]]
+[node name="Table" type="Area3D" node_paths=PackedStringArray("stools") groups=["table"]]
 script = ExtResource("1_tnjg4")
 _Stool = ExtResource("2_tn7jc")
+stools = NodePath("Stools")
 
 [node name="Table" parent="." instance=ExtResource("1_oesnu")]
+layers = 2
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_5jvqx")
@@ -36,6 +38,7 @@ shape = SubResource("SphereShape3D_5jvqx")
 
 [node name="Plate" parent="." instance=ExtResource("2_7oa2n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53908, 0)
+layers = 2
 
 [node name="Chukaman" parent="Plate" instance=ExtResource("5_ihdfm")]
 visible = false

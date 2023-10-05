@@ -31,12 +31,12 @@ var offset: Vector3 = Vector3.ZERO
 @export var isAvailable: bool = true
 
 @export_category("Objects")
-@export var stools: Node3D = null
+@export var stools: Node = null
 
 func _ready() -> void:
 	for chair in chairAmount:
 		var newChair = _Stool.instantiate()
-		newChair.transform.origin = chairPosition[chair]
+		newChair.transform.origin = chairPosition[chair] + global_position
 		stools.add_child(newChair)
 		
 func isTableAvailable(entity) -> void:

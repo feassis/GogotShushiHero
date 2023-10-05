@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://characters/scripts/SpringAmrOffset.gd" id="3_083p8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_51ikw"]
-radius = 1.0
+radius = 0.7
 height = 3.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2x0o6"]
@@ -10256,6 +10256,7 @@ _data = {
 }
 
 [node name="MainCharacter" type="CharacterBody3D" node_paths=PackedStringArray("body", "springArmOffset")]
+collision_mask = 3
 script = ExtResource("1_a5s2d")
 body = NodePath("body")
 springArmOffset = NodePath("SpringAmrOffset")
