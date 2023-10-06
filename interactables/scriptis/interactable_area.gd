@@ -2,7 +2,7 @@ extends Area3D
 class_name InteractableArea
 
 @export_category("Object")
-@export var parent: Node3D = null
+@export var parent: InteractableObject = null
 
 
 func _on_body_entered(body):
@@ -15,5 +15,5 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body is Character:
-		parent.CanInteract(true)
+		parent.CanInteract(false)
 		body.current_entity = null

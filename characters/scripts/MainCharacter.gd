@@ -5,6 +5,9 @@ const normalSpeed: float = 5.0
 const sprintSpeed: float = 9.0
 
 var _currentSpeed
+var current_entity
+var isFreezed: bool = false
+var canInteract : bool  = true
 
 @export_category("Objects")
 @export var body: Node3D = null
@@ -14,6 +17,9 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(_delta: float) -> void:
+	if isFreezed:
+		return
+	
 	_move()
 	move_and_slide()
 	body.animate(velocity)
@@ -49,3 +55,19 @@ func is_running() -> bool:
 		return true
 	_currentSpeed = normalSpeed
 	return false
+
+func freeze(state: bool) -> void:
+	body.animation.play("Idle")
+	
+	if state: 
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	springArmOffset.canRotate = not state
+	isFreezed = state
+
+		
+func ChangePosition(desiredPos: Vector3, desiredRotation: float) -> void:
+	global_position = desiredPos
+	body.rotation.y = desiredRotation

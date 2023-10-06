@@ -7,6 +7,9 @@ var characterRef: Character = null
 @export_category("Objects")
 @export var feedback: MeshInstance3D = null
 
+func _ready():
+	feedback.visible= false
+
 func CanInteract(state: bool, body:Character = null) -> void:
 	feedback.visible = state
 	characterRef = body

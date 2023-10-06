@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cm05rgcx6lhy4"]
+[gd_scene load_steps=21 format=3 uid="uid://cm05rgcx6lhy4"]
 
 [ext_resource type="PackedScene" uid="uid://dvet3sco10wdf" path="res://characters/scenes/MainCharacter.tscn" id="1_ss0bj"]
 [ext_resource type="PackedScene" uid="uid://q526qo4quevn" path="res://GridMaps/Scenes/FloorGridPapScene.tscn" id="2_fnn2i"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://1u6l6cj4eucy" path="res://interactables/scenes/table.tscn" id="6_kiy0n"]
 [ext_resource type="PackedScene" uid="uid://cf0spwd77ycb3" path="res://interface/scenes/gui.tscn" id="7_ccc1u"]
 [ext_resource type="PackedScene" uid="uid://dk2j2sxrbj6th" path="res://decorations/scenes/wall_light.tscn" id="10_mitms"]
+[ext_resource type="PackedScene" uid="uid://ci2ekihca4n3d" path="res://interactables/scenes/recipie_sign.tscn" id="11_t3fpo"]
+[ext_resource type="PackedScene" uid="uid://d0srhmr268dy6" path="res://interactables/scenes/oven.tscn" id="12_eq3gc"]
+[ext_resource type="PackedScene" uid="uid://bdtlib75vw3sa" path="res://interactables/scenes/fridge.tscn" id="13_al6a5"]
+[ext_resource type="PackedScene" uid="uid://dd1wclsuk8jh7" path="res://interactables/scenes/cutting_table.tscn" id="14_n7mxm"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r8mvb"]
 size = Vector2(1000, 1000)
@@ -111,6 +115,9 @@ data = {
 }
 
 [node name="CountersGridMap" parent="Level Grid Map" instance=ExtResource("4_xjuse")]
+data = {
+"cells": PackedInt32Array(12, 65528, 0, 16, 65528, 2, 19, 65528, 1, 12, 65532, 1048582, 12, 65533, 1048580, 12, 1, 1048581, 65533, 65528, 7, 65529, 65528, 7, 65522, 65528, 0, 65525, 65528, 7, 65530, 1, 7, 65530, 0, 655367, 65526, 0, 655367, 65526, 1, 7)
+}
 
 [node name="Node3D" type="Node3D" parent="Level Grid Map"]
 
@@ -376,3 +383,17 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.887
 
 [node name="WallLight19" parent="Decoration" instance=ExtResource("10_mitms")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9393, 8.29846, 33.9925)
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="recipiesign" parent="Interactables" instance=ExtResource("11_t3fpo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.3163, 5.34313, 9.7462)
+
+[node name="Oven" parent="Interactables" instance=ExtResource("12_eq3gc")]
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 17.2508, 0, 1.67954)
+
+[node name="Fridge" parent="Interactables" instance=ExtResource("13_al6a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2865, 0, -4.4985)
+
+[node name="CuttingTable" parent="Interactables" instance=ExtResource("14_n7mxm")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 8.78456, 1.38837, -1.22659)

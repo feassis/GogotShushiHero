@@ -9,7 +9,11 @@ class_name CharacterSpringArm
 @export_category("Objects")
 @export var springArm: SpringArm3D = null
 
+var canRotate: bool = true
+
 func  _unhandled_input(event) -> void:
+	if not canRotate:
+		return
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouseSensibility)
 		springArm.rotate_x(-event.relative.y * mouseSensibility)

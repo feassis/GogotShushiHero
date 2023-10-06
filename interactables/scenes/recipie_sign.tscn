@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci2ekihca4n3d"]
+[gd_scene load_steps=9 format=3 uid="uid://ci2ekihca4n3d"]
 
 [ext_resource type="Texture2D" uid="uid://csro1p84g63rw" path="res://furniture/walls/models/decorations/sign_3_Sushi_Atlas.png" id="1_eglxy"]
+[ext_resource type="Script" path="res://interactables/scriptis/recipie_sign.gd" id="2_ul7it"]
+[ext_resource type="PackedScene" uid="uid://crm0ppu6yyxeq" path="res://interactables/scenes/interactable_area.tscn" id="3_h0umt"]
+[ext_resource type="PackedScene" uid="uid://dvcg2pbirfrju" path="res://decorations/scenes/feedback.tscn" id="4_c78u0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abync"]
 resource_name = "Atlas"
@@ -39,6 +42,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qs0tb")
 
-[node name="recipiesign" type="MeshInstance3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e67sr"]
+size = Vector3(3, 4, 2)
+
+[node name="recipiesign" type="MeshInstance3D" node_paths=PackedStringArray("feedback")]
 mesh = SubResource("ArrayMesh_drf8v")
 skeleton = NodePath("")
+script = ExtResource("2_ul7it")
+feedback = NodePath("Feedback")
+
+[node name="InteractableArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_h0umt")]
+collision_layer = 3
+parent = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.99718, 1.32975)
+shape = SubResource("BoxShape3D_e67sr")
+
+[node name="Feedback" parent="." instance=ExtResource("4_c78u0")]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 1, 0)

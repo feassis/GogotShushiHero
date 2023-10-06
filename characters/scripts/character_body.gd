@@ -24,4 +24,4 @@ func animate(velocity: Vector3) -> void:
 		return
 	animation.play("Idle")
 			
-		
+
