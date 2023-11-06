@@ -2,5 +2,4 @@ extends InteractableObject
 class_name ReciptSign
 
 func interact() -> void:
-	
-	pass
+	get_tree().call_group("recipes", "Display", self, true)

@@ -15,6 +15,9 @@ func _ready() ->void:
 			button.item_selected.connect(onButtonSelected.bind(button))
 
 func _process(delta) -> void:
+	if globals.character.isFreezed:
+		return
+	
 	if(Input.is_action_just_pressed("ui_cancel")):
 		visible = not visible
 		get_tree().paused = not get_tree().paused

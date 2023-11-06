@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://dd1wclsuk8jh7"]
+[gd_scene load_steps=23 format=3 uid="uid://dd1wclsuk8jh7"]
 
 [ext_resource type="Texture2D" uid="uid://b0ayw0r7qhteq" path="res://furniture/walls/models/environment/misc/cutting_table_Sushi_Atlas.png" id="1_b26me"]
 [ext_resource type="Script" path="res://interactables/scriptis/cutting_table.gd" id="2_6tle8"]
 [ext_resource type="PackedScene" uid="uid://dvcg2pbirfrju" path="res://decorations/scenes/feedback.tscn" id="2_ut03g"]
 [ext_resource type="PackedScene" uid="uid://crm0ppu6yyxeq" path="res://interactables/scenes/interactable_area.tscn" id="3_etr4o"]
-[ext_resource type="Script" path="res://level/scripts/ingredients.gd" id="5_amwbp"]
 [ext_resource type="PackedScene" uid="uid://b2x3u537a6pps" path="res://foods_ingredients/scenes/avocado.tscn" id="6_w3jy6"]
 [ext_resource type="PackedScene" uid="uid://bvaqle7dglrfx" path="res://foods_ingredients/scenes/crabsticks.tscn" id="7_n8yxo"]
 [ext_resource type="PackedScene" uid="uid://dwxcjm1i0dnjb" path="res://foods_ingredients/scenes/cucumber.tscn" id="8_edgwg"]
@@ -62,10 +61,11 @@ shadow_mesh = SubResource("ArrayMesh_wsuib")
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5jt4"]
 size = Vector3(2.36021, 2.27611, 2.17827)
 
-[node name="CuttingTable" type="MeshInstance3D" node_paths=PackedStringArray("onUsePosition", "feedback")]
+[node name="CuttingTable" type="MeshInstance3D" node_paths=PackedStringArray("ingredients", "onUsePosition", "feedback")]
 mesh = SubResource("ArrayMesh_raj5x")
 skeleton = NodePath("")
 script = ExtResource("2_6tle8")
+ingredients = NodePath("Ingredients")
 onUsePosition = NodePath("OnUsePosition")
 feedback = NodePath("Feedback")
 
@@ -83,8 +83,7 @@ shape = SubResource("BoxShape3D_n5jt4")
 [node name="OnUsePosition" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.81739, 2.07141)
 
-[node name="Ingredients" type="Node" parent="."]
-script = ExtResource("5_amwbp")
+[node name="Ingredients" type="Node3D" parent="."]
 
 [node name="Avocado" parent="Ingredients" instance=ExtResource("6_w3jy6")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0.338562, 0)

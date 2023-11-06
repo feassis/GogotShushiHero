@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf0spwd77ycb3"]
+[gd_scene load_steps=7 format=3 uid="uid://cf0spwd77ycb3"]
 
 [ext_resource type="PackedScene" uid="uid://bkloan6mf66c8" path="res://interface/scenes/settings_container.tscn" id="1_xjh35"]
 [ext_resource type="PackedScene" uid="uid://c7ydy34iq3ki7" path="res://interface/scenes/fpsContainter.tscn" id="2_q4fos"]
+[ext_resource type="PackedScene" uid="uid://deo3iwupkqvj5" path="res://interface/scenes/containers/fridge_container.tscn" id="3_0t63c"]
+[ext_resource type="PackedScene" uid="uid://chvq8x7n77alj" path="res://interface/scenes/containers/oven_container.tscn" id="4_akeu6"]
+[ext_resource type="PackedScene" uid="uid://db01gpljpn1yy" path="res://interface/scenes/containers/cutting_container.tscn" id="5_70hol"]
+[ext_resource type="PackedScene" uid="uid://bh01gtwd64uig" path="res://interface/scenes/containers/recipes_container.tscn" id="6_cepf6"]
 
 [node name="GUI" type="CanvasLayer"]
 process_mode = 3
@@ -10,4 +14,16 @@ process_mode = 3
 fpsContainer = NodePath("../ColorRect")
 
 [node name="ColorRect" parent="." instance=ExtResource("2_q4fos")]
+visible = false
+
+[node name="FridgeContainer" parent="." instance=ExtResource("3_0t63c")]
+visible = false
+
+[node name="OvenContainer" parent="." instance=ExtResource("4_akeu6")]
+visible = false
+
+[node name="Cutting Container" parent="." instance=ExtResource("5_70hol")]
+visible = false
+
+[node name="RecipesBG" parent="." instance=ExtResource("6_cepf6")]
 visible = false

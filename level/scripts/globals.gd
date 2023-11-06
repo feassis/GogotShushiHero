@@ -2,7 +2,7 @@ extends Node
 
 #const _SFX: PackedScene = preload("res://musics/sfx/scenes/default_sfx.tscn")
 
-var character: CharacterBody3D = null
+var character: Character = null
 var interface: CanvasLayer = null
 
 var current_container: String = ""

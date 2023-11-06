@@ -1,4 +1,4 @@
 extends InteractableObject
 
 func interact() -> void:
-	pass
+	get_tree().call_group("fridge_container", "Display", self, true)

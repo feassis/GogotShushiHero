@@ -9,11 +9,19 @@ var current_entity
 var isFreezed: bool = false
 var canInteract : bool  = true
 
+var lastFood: String
+
 @export_category("Objects")
-@export var body: Node3D = null
-@export var springArmOffset: Node3D = null
+@export var body: Body = null
+@export var springArmOffset: CharacterSpringArm = null
+@export var itemFeedback: MeshInstance3D = null
+@export var inventory: Inventory = null
+
+var lastPreparedIngredientAmount: int = 0
+var lastPreparedIngredient
 
 func _ready() -> void:
+	globals.character = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(_delta: float) -> void:
@@ -67,7 +75,81 @@ func freeze(state: bool) -> void:
 	springArmOffset.canRotate = not state
 	isFreezed = state
 
+func Cook(recipe: String):
+	lastFood = recipe
+	canInteract = false
+	
+	itemFeedback.get_node("Front").texture = load(
+		recipes.recipes_dict[recipe]["item_texture"]
+	)
+	
+	itemFeedback.get_node("Back").texture = load(
+		recipes.recipes_dict[recipe]["item_texture"]
+	)
+	
+	body.isCooking = true
+	body.animate(velocity)
+	set_physics_process(false)
+	springArmOffset.canRotate = true
+
+func Chop(ingredient, amount):
+	canInteract = false
+	lastPreparedIngredient = ingredient
+	lastPreparedIngredientAmount = amount
+	
+	itemFeedback.get_node("Front").texture = load(
+		ingredients.ingredients_dict[ingredient]["item_texture"]
+	)
+	
+	itemFeedback.get_node("Back").texture = load(
+		ingredients.ingredients_dict[ingredient]["item_texture"]
+	)
+	
+	body.isChopping = true
+	set_physics_process(false)
+	springArmOffset.canRotate = true
 		
 func ChangePosition(desiredPos: Vector3, desiredRotation: float) -> void:
 	global_position = desiredPos
 	body.rotation.y = desiredRotation
+
+func OnChopFinished():
+	freeze(false)
+	body.isChopping= false
+	set_physics_process(true)
+	itemFeedback.get_node("Animation").play("Show_Igredients")
+
+func OnCookFinished():
+	freeze(false)
+	body.isCooking = false
+	set_physics_process(true)
+	itemFeedback.get_node("Animation").play("Show")
+
+
+func _on_item_animation_animation_finished(anim_name):
+	match anim_name:
+		"Show":
+			var item: Dictionary = {}
+			item[lastFood] = {
+				"item_amount": 1,
+				"item_name": lastFood,
+				"item_texture": recipes.recipes_dict[lastFood]["item_texture"],
+				"price": recipes.recipes_dict[lastFood]["price"]
+				
+			}
+			
+			inventory.AddItem(item[lastFood])
+		"Show_Igredients":
+			for i  in lastPreparedIngredientAmount:
+				var item: Dictionary = {}
+				item[lastPreparedIngredient] = {
+				"item_amount": 1,
+				"item_name": lastPreparedIngredient,
+				"item_texture": ingredients.ingredients_dict[lastPreparedIngredient]["item_texture"],
+				}
+				inventory.AddItem(item[lastPreparedIngredient])
+			
+	
+	canInteract = true
+	if current_entity != null:
+		current_entity.CanInteract(true)

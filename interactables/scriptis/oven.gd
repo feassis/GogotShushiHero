@@ -7,4 +7,4 @@ class_name Oven
 
 func interact() -> void:
 	characterRef.ChangePosition(onUsePosition.global_position, onUsePosition.global_rotation.y)
-	
+	get_tree().call_group("oven_container", "Display", self, true)
