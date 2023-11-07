@@ -12,8 +12,8 @@ var item: Dictionary = {}
 
 func AddItem(newItem: Dictionary) -> void:
 	item = newItem
-	itemPrice.text = "PRICE -$" + str(item["item_price"])
-	itemName.text = "ITEM - " + item["item_name"].captalize()
+	itemPrice.text = "PRICE -$" + str(item["price"])
+	itemName.text = "ITEM - " + item["item_name"].capitalize()
 	itemTexture.texture = load(item["item_texture"])
 	
 func GetItem() -> Dictionary:

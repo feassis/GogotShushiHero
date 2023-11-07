@@ -1,7 +1,7 @@
 extends InteractableObject
 
 func interact():
-	pass
+	get_tree().call_group("truck_container", "Display", self, true)
 
 
 

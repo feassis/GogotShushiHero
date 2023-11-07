@@ -8,6 +8,7 @@ var _currentSpeed
 var current_entity
 var isFreezed: bool = false
 var canInteract : bool  = true
+var gold: int = 10
 
 var lastFood: String
 
@@ -153,3 +154,11 @@ func _on_item_animation_animation_finished(anim_name):
 	canInteract = true
 	if current_entity != null:
 		current_entity.CanInteract(true)
+
+func UpdateGold(value: int, type:String):
+	match type:
+		"increase":
+			gold += value
+		"decrease":
+			gold -= value
+
